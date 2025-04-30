@@ -5,16 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-var connectionString = builder.Configuration.GetConnectionString("productsdb");
-
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
+builder.AddNpgsqlDbContext<ApplicationDbContext>(connectionName: "productsdb");
 
 builder.Services.AddControllers();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
 builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString));
 
 var app = builder.Build();
 

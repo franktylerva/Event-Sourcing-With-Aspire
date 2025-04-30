@@ -25,7 +25,17 @@ Content-Type: application/json
 {
   "name": "Apple IPad Pro",
   "price": 399.00,
-  "productCategoryId": "f222e6b1-60c7-4956-aeeb-7df52d21c537"
+  "productCategoryId": "59c7a433-84ab-4119-b6ff-ac36927950ef"
+}
+
+###
+POST {{ProductCatalog_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Basketball",
+  "price": 39.00,
+  "productCategoryId": "dc43495c-662c-423f-a47c-6bd568d16075"
 }
 
 ###
@@ -36,7 +46,7 @@ Content-Type: application/json
   "id": "ec7149ae-b39d-4ebe-83f8-db28687822e3",
   "name": "Apple IPad Pro",
   "price": 398.00,
-  "productCategoryId": "0ba201ae-574c-4e18-b486-c40c0e9242fd"
+  "productCategoryId": "59c7a433-84ab-4119-b6ff-ac36927950ef"
 }
 
 ###
