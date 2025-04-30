@@ -1,0 +1,39 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/AppHost/AppHost.csproj" />
+  </Folder>
+  <Folder Name="/src/Clients/">
+    <Project Path="src/Clients/Blazor/Blazor.csproj" />
+  </Folder>
+  <Folder Name="/src/Core/">
+    <Project Path="src/Core/Core.Tests/Core.Tests.csproj" />
+    <Project Path="src/Core/Core/Core.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/">
+    <Project Path="src/Services/ServiceDefaults/ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/CustomerManagement/">
+    <Project Path="src/Services/CustomerManagement/CustomerManagement.Tests/CustomerManagement.Tests.csproj" />
+    <Project Path="src/Services/CustomerManagement/CustomerManagement/CustomerManagement.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/InventoryManagement/">
+    <Project Path="src/Services/InventoryManagement/InventoryManagement.Tests/InventoryManagement.Tests.csproj" />
+    <Project Path="src/Services/InventoryManagement/InventoryManagement/InventoryManagement.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/OrderProcessing/">
+    <Project Path="src/Services/OrderProcessing/OrderProcessing.Tests/OrderProcessing.Tests.csproj" />
+    <Project Path="src/Services/OrderProcessing/OrderProcessing/OrderProcessing.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/PaymentProcessing/">
+    <Project Path="src/Services/PaymentProcessing/PaymentProcessing.Tests/PaymentProcessing.Tests.csproj" />
+    <Project Path="src/Services/PaymentProcessing/PaymentProcessing/PaymentProcessing.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/ProductCatalog/">
+    <Project Path="src/Services/ProductCatalog/ProductCatalog.Tests/ProductCatalog.Tests.csproj" />
+    <Project Path="src/Services/ProductCatalog/ProductCatalog/ProductCatalog.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/ShipmentProcessing/">
+    <Project Path="src/Services/ShipmentProcessing/ShipmentProcessing.Tests/ShipmentProcessing.Tests.csproj" />
+    <Project Path="src/Services/ShipmentProcessing/ShipmentProcessing/ShipmentProcessing.csproj" />
+  </Folder>
+</Solution>

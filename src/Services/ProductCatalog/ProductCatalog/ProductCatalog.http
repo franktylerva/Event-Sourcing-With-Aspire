@@ -1,0 +1,49 @@
+@ProductCatalog_HostAddress = http://localhost:5104
+
+POST {{ProductCatalog_HostAddress}}/api/productcategories
+Content-Type: application/json
+
+{
+  "name": "Electronics"
+}
+
+###
+POST {{ProductCatalog_HostAddress}}/api/productcategories
+Content-Type: application/json
+
+{
+  "name": "Sports"
+}
+
+###
+GET {{ProductCatalog_HostAddress}}/api/productcategories/
+Accept: application/json
+###
+POST {{ProductCatalog_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Apple IPad Pro",
+  "price": 399.00,
+  "productCategoryId": "f222e6b1-60c7-4956-aeeb-7df52d21c537"
+}
+
+###
+PUT {{ProductCatalog_HostAddress}}/api/products/ec7149ae-b39d-4ebe-83f8-db28687822e3
+Content-Type: application/json
+
+{
+  "id": "ec7149ae-b39d-4ebe-83f8-db28687822e3",
+  "name": "Apple IPad Pro",
+  "price": 398.00,
+  "productCategoryId": "0ba201ae-574c-4e18-b486-c40c0e9242fd"
+}
+
+###
+
+GET {{ProductCatalog_HostAddress}}/api/products/
+Accept: application/json
+
+###
+GET {{ProductCatalog_HostAddress}}/api/products/99c771ad-1e21-4765-a4fc-ac81d1d726c3
+Accept: application/json
