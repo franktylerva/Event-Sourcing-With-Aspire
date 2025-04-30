@@ -1,6 +1,47 @@
-@page "/Products"
+@page "/products"
+@using Blazor.Models
+@inject HttpClient client;
 <h3>Products</h3>
 
+@if (_products == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var product in _products)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+
+
 @code {
+
+    private IEnumerable<ProductModel>? _products = null;
     
+    protected override async Task OnInitializedAsync()
+    {
+        using var response = await client.GetAsync("api/products", CancellationToken.None);
+        if (response.IsSuccessStatusCode)
+        {
+            _products = await response.Content.ReadFromJsonAsync<IEnumerable<ProductModel>>();
+        }
+    }
 }

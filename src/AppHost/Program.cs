@@ -9,13 +9,18 @@ var postgres = builder.AddPostgres("postgres")
 var productsDb = postgres.AddDatabase("productsdb");
 
 var productApi = builder.AddProject<ProductCatalog>("product-api")
-    .WithExternalHttpEndpoints()
     .WithReference(productsDb)
     .WaitFor(postgres);
 
-builder.AddProject<Blazor>("blazor-client")
-    .WithExternalHttpEndpoints()
+var blazorClient = builder.AddProject<Blazor>("blazor-client")
     .WithReference(productApi)
     .WaitFor(productApi);
+
+var gateway = builder.AddProject<Gateway>("gateway")
+    .WithReference(productApi)
+    .WaitFor(productApi)
+    .WithReference(blazorClient)
+    .WaitFor(blazorClient)
+    .WithExternalHttpEndpoints();
 
 builder.Build().Run();

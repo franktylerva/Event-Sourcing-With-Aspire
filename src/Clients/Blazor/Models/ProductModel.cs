@@ -1,6 +1,6 @@
 namespace Blazor.Models;
 
-public class Product
+public class ProductModel
 {
     public Guid Id { get; set; }
     public required string Name { get; set; }

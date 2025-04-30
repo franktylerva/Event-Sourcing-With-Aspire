@@ -8,7 +8,6 @@ namespace ProductCatalog.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 public class ProductCategoriesController(IMediator mediator) : ControllerBase
 {
     [HttpGet]

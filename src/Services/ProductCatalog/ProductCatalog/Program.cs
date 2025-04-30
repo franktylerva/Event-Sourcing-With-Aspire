@@ -1,29 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Trace;
 using ProductCatalog.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 var connectionString = builder.Configuration.GetConnectionString("productsdb");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
-
-builder.Services.AddHealthChecks()
-    .AddNpgSql(
-        builder.Configuration.GetConnectionString("productsdb") ?? string.Empty,
-        name: "Postgres",
-        tags: ["db", "postgres"]
-    );
-
-builder.Services.AddAuthorization();
-
-builder.Services.AddAuthentication()
-    .AddKeycloakJwtBearer("keycloak", realm: "event-sourcing", options =>
-    {
-        options.RequireHttpsMetadata = false;
-        options.Audience = "account";
-    });
 
 builder.Services.AddControllers();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
@@ -35,10 +19,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 var app = builder.Build();
 
 app.MapControllers();
-
-app.UseAuthentication();
-
-app.UseAuthorization();
 
 using (var scope = app.Services.CreateScope())
 {

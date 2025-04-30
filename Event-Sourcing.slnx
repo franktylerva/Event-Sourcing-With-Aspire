@@ -10,6 +10,7 @@
     <Project Path="src/Core/Core/Core.csproj" />
   </Folder>
   <Folder Name="/src/Services/">
+    <Project Path="src/Services/Gateway/Gateway.csproj" />
     <Project Path="src/Services/ServiceDefaults/ServiceDefaults.csproj" />
   </Folder>
   <Folder Name="/src/Services/CustomerManagement/">
