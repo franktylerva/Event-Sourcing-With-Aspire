@@ -11,6 +11,15 @@ builder.Services.AddControllers();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddAuthorization();
+
+builder.Services.AddAuthentication()
+    .AddKeycloakJwtBearer("keycloak", realm: "event-sourcing", options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.Audience = "products-api";
+    });
+
 var app = builder.Build();
 
 app.MapControllers();
@@ -22,6 +31,10 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.MapHealthChecks("/health");
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.Run();
 public partial class Program{}

@@ -11,6 +11,7 @@ namespace ProductCatalog.Controllers;
 public class ProductsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> GetProducts()
     {
         var products = await mediator.Send(new GetProductsQuery());
