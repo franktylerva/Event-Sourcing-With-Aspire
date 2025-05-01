@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProductCatalog.Data;
+using Wolverine;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,12 @@ builder.AddServiceDefaults();
 builder.AddNpgsqlDbContext<ApplicationDbContext>(connectionName: "productsdb");
 
 builder.Services.AddControllers();
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
+
+builder.Host.UseWolverine(options =>
+{
+    options.Durability.Mode = DurabilityMode.MediatorOnly;
+});
+
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddAuthorization();

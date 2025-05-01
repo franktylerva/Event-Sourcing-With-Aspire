@@ -1,15 +1,13 @@
-using MediatR;
-using ProductCatalog.CQRS.Queries;
 using ProductCatalog.Data;
-using ProductCatalog.Models;
+using ProductCatalog.Domain;
 
 namespace ProductCatalog.CQRS.Commands;
 
-public record CreateProductCommand(string Name, decimal Price, Guid ProductCategoryId) : IRequest<Product>;
+public record CreateProductCommand(string Name, decimal Price, Guid ProductCategoryId);
 
-public class CreateProductCommandHandler(ApplicationDbContext context) : IRequestHandler<CreateProductCommand, Product>
+public class CreateProductCommandHandler(ApplicationDbContext context)
 {
-    public async Task<Product> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+    public async Task<Product?> Handle(CreateProductCommand request, CancellationToken cancellationToken)
     {
         var productCategory = await context.ProductCategories.FindAsync(request.ProductCategoryId);
         

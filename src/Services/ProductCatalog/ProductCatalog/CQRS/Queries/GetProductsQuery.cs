@@ -1,13 +1,12 @@
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ProductCatalog.Data;
-using ProductCatalog.Models;
+using ProductCatalog.Domain;
 
 namespace ProductCatalog.CQRS.Queries;
 
-public record GetProductsQuery : IRequest<IEnumerable<Product>>;
+public record GetProductsQuery;
 
-public class GetProductsQueryHandler(ApplicationDbContext context) : IRequestHandler<GetProductsQuery, IEnumerable<Product>>
+public class GetProductsQueryHandler(ApplicationDbContext context)
 {
     public async Task<IEnumerable<Product>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
     {

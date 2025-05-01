@@ -1,11 +1,10 @@
-using MediatR;
 using ProductCatalog.Data;
 
 namespace ProductCatalog.CQRS.Commands;
 
-public record UpdateProductCommand(Guid Id, string Name, decimal Price, Guid ProductCategoryId) : IRequest<bool>;
+public record UpdateProductCommand(Guid Id, string Name, decimal Price, Guid ProductCategoryId);
 
-public class UpdateProductCommandHandler(ApplicationDbContext context) : IRequestHandler<UpdateProductCommand, bool>
+public class UpdateProductCommandHandler(ApplicationDbContext context)
 {
     public async Task<bool> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
     {

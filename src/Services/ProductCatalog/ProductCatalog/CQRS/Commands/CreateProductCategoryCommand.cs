@@ -1,15 +1,13 @@
-using MediatR;
 using ProductCatalog.Data;
-using ProductCatalog.Models;
+using ProductCatalog.Domain;
 
 namespace ProductCatalog.CQRS.Commands;
 
-public record CreateProductCategoryCommand(string Name) : IRequest<ProductCategory>;
+public record CreateProductCategoryCommand(string Name);
 
 public class CreateProductCategoryCommandHandler(ApplicationDbContext context)
-    : IRequestHandler<CreateProductCategoryCommand, ProductCategory>
 {
-    public async Task<ProductCategory> Handle(CreateProductCategoryCommand request, CancellationToken cancellationToken)
+    public async Task<ProductCategory?> Handle(CreateProductCategoryCommand request, CancellationToken cancellationToken)
     {
         var productCategory = new ProductCategory
         {
