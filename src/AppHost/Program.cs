@@ -24,11 +24,19 @@ var blazorClient = builder.AddProject<Blazor>("blazor-client")
     .WithReference(productApi)
     .WaitFor(productApi);
 
+var reactClient = builder.AddViteApp("react-client", 
+        "../Clients/React", "yarn")
+    .WithExternalHttpEndpoints()
+    .WithReference(productApi)
+    .WaitFor(productApi);
+
 var gateway = builder.AddProject<Gateway>("gateway")
     .WithReference(productApi)
     .WaitFor(productApi)
     .WithReference(blazorClient)
     .WaitFor(blazorClient)
+    .WithReference(reactClient)
+    .WaitFor(reactClient)
     .WithExternalHttpEndpoints();
 
 builder.Build().Run();

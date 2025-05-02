@@ -18,6 +18,8 @@
     <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.2.0" />
     <PackageReference Include="Aspire.Hosting.RabbitMQ" Version="9.2.0" />
     <PackageReference Include="Aspire.Hosting.Redis" Version="9.2.0" />
+    <PackageReference Include="Aspire.Hosting.NodeJs" Version="9.2.0" />
+    <PackageReference Include="CommunityToolkit.Aspire.Hosting.NodeJS.Extensions" Version="9.2.1"/>
   </ItemGroup>
 
   <ItemGroup>
